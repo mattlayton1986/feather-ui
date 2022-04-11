@@ -1,9 +1,10 @@
 import React from "react"
 import { render } from '@testing-library/react'
-import BaseButton from "./Button"
+import Button from "./Button"
 
-describe("<BaseButton>", () => {
+describe("<Button>", () => {
   test("it should render to the page", () => {
-    render(<BaseButton />)
+    let button = render(<Button />)
+    console.log(button)
   })
 })

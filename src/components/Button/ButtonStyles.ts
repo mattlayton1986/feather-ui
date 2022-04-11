@@ -32,7 +32,7 @@ export const text = css`
   color: ${palette.theme.primary.main};
   &:hover {
     color: ${palette.theme.primary.dark};
-    background: rgba(0,0,0,0.08);
+    background: rgba(0,0,0,0.03);
   }
 `
 
@@ -41,7 +41,8 @@ export const outlined = css`
   border: 1px solid ${palette.theme.primary.main};
   &:hover {
     color: ${palette.theme.primary.dark};
-  border-color: ${palette.theme.primary.dark};
+    border-color: ${palette.theme.primary.dark};
+    background: rgba(0,0,0,0.03);
   }
 `
 
