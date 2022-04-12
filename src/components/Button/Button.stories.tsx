@@ -8,15 +8,19 @@ export default {
   component: Button,
 } as Meta;
 
+const handleClick = () => {
+  alert('Button clicked')
+}
+
 // Create a master template for mapping args to render the Button component
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 // Reuse that template for creating different stories
 export const TextButton = Template.bind({});
-TextButton.args = { label: "Text Button" };
+TextButton.args = { children: "Text Button", onClick: handleClick };
 
 export const OutlinedButton = Template.bind({});
-OutlinedButton.args = { variant: "outlined", label: "Outlined Button" };
+OutlinedButton.args = { variant: "outlined", children: "Outlined Button", onClick: handleClick};
 
 export const FilledButton = Template.bind({});
-FilledButton.args = { variant: "filled", label: "Filled Button" };
+FilledButton.args = { variant: "filled", children: "Filled Button", onClick: handleClick };

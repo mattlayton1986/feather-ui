@@ -1,20 +1,28 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import * as ButtonStyles from './ButtonStyles'
 
 export interface ButtonProps {
   /**
-   * Defines the variant style of button
+   * Style of button to be used
    */
   variant: "text" | "filled" | "outlined";
   /**
-   * How large should the button be?
+   * Size of the component
    */
   size: "small" | "medium" | "large";
   /**
-   * Button text contents
+   * Button label
    */
-  label?: string;
+  children?: string;
+  /**
+   * Disables button functionality
+   */
+  disabled?: boolean;
+  /**
+   * Makes button full width of it's container
+   */
+  fullWidth?: boolean;
   /**
    * Optional click handler
    */
@@ -27,6 +35,10 @@ const StyledButton = styled.button<ButtonProps>`
     ${ButtonStyles.buttonBase};
     ${({ size }) => ButtonStyles[size]};
     ${({ variant }) => ButtonStyles[variant]};
+    ${({ fullWidth }) => fullWidth && css`
+      width: 100%;
+      display: block;
+    `}
 `
 
 /**
@@ -35,16 +47,20 @@ const StyledButton = styled.button<ButtonProps>`
  const Button = ({
   variant,
   size,
+  children,
+  disabled,
+  fullWidth,
   onClick,
-  label
 }: ButtonProps) => {
   return (
    <StyledButton
     variant={variant}
     size={size}
+    disabled={disabled}
+    fullWidth={fullWidth}
     onClick={onClick}
    >
-     {label}
+     {children}
    </StyledButton>
   );
 }
@@ -52,6 +68,8 @@ const StyledButton = styled.button<ButtonProps>`
   Button.defaultProps = {
     variant: "text",
     size: "medium",
+    disabled: false,
+    fullWidth: false,
   }
 
 export default Button

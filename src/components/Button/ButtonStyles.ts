@@ -6,11 +6,17 @@ export const buttonBase = css`
   font-weight: ${fonts.weight.regular};
   border: 0;
   border-radius: 0.25em;
-  cursor: pointer;
   display: inline-block;
   line-height: 1;
   text-transform: uppercase;
   background: ${palette.transparent};
+  &:enabled {
+    cursor: pointer;
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
 `
 
 export const small = css`
@@ -30,7 +36,7 @@ export const large = css`
 
 export const text = css`
   color: ${palette.theme.primary.main};
-  &:hover {
+  &:hover:enabled {
     color: ${palette.theme.primary.dark};
     background: rgba(0,0,0,0.03);
   }
@@ -39,7 +45,7 @@ export const text = css`
 export const outlined = css`
   color: ${palette.theme.primary.main};
   border: 1px solid ${palette.theme.primary.main};
-  &:hover {
+  &:hover:enabled {
     color: ${palette.theme.primary.dark};
     border-color: ${palette.theme.primary.dark};
     background: rgba(0,0,0,0.03);
@@ -49,7 +55,7 @@ export const outlined = css`
 export const filled = css`
   color: ${palette.light.text.theme};
   background: ${palette.theme.primary.main};
-  &:hover {
+  &:hover:enabled {
     background: ${palette.theme.primary.dark};
   }
 `
